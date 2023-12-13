@@ -31,4 +31,33 @@ public class InstructionAndMission : MonoBehaviour
         "確認皇室家庭組成",
         "確認女王是否為外星人"
     };
+
+    public void updateInstruction(int id) {
+        instructions.text = Instructions[id];
+    }
+
+    public void updateMission(int id) {
+        missions.text = Missions[id];
+    }
+
+    [SerializeField] private bool missionIsOpen, instructionIsOpen;
+    public void showMissions() {
+        if(missionIsOpen) {
+            missionCanva.SetActive(false);
+        }
+        if(!missionIsOpen) {
+            missionCanva.SetActive(true);
+        }
+        missionIsOpen = !missionIsOpen;
+    }
+
+    public void showInstructions() {
+        if(instructionIsOpen) {
+            instructionCanva.SetActive(false);
+        }
+        if(!instructionIsOpen) {
+            instructionCanva.SetActive(true);
+        }
+        instructionIsOpen = !instructionIsOpen;
+    }
 }

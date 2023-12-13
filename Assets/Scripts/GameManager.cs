@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Mono.Cecil.Cil;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private int instructionID = 0, missionID = 0;
+    [SerializeField] private GameObject InstructionAndMission;
     [SerializeField] private GameObject[] DialogBox;
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject Backpack;
