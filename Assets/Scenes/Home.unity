@@ -1691,6 +1691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 672440190}
+  - component: {fileID: 672440191}
   m_Layer: 0
   m_Name: Instruction&Mission
   m_TagString: Untagged
@@ -1715,6 +1716,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &672440191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672440189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb10690a25895674ebc8dc58e16ddc33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionCanva: {fileID: 278712879}
+  instructionCanva: {fileID: 294099915}
+  missions: {fileID: 546881428}
+  instructions: {fileID: 926536856}
+  Instructions:
+  - "\u5C0B\u627E\u96FB\u8166\u67E5\u770B\u65B0\u805E"
+  - "\u524D\u5F80A\u9EE8\u7E3D\u7D71\u5019\u9078\u8FA6\u516C\u5BA4\u5C0B\u6C42\u672C\u4EBA\u8AAA\u6CD5"
+  - "\u8ABF\u591C\u5E02\u7684\u76E3\u8996\u5668\u770B\u770BMr.\u67EF\u662F\u5426\u6709\u4E82\u5410\u9E7D\u9165\u96DE"
+  - 
+  Missions:
+  - "Mr.\u67EF\u300C\u8A00\u884C\u4E0D\u4E00\u81F4\uFF0C\u88DD\u6A21\u4F5C\u6A23\u300D\u300C\u89BA\u5F97\u96E3\u5403\u4E82\u5410\u9E7D\u9165\u96DE\u300D"
+  - "Mr.\u67EF\u4E82\u5410\u9E79\u9165\u96DE"
 --- !u!1 &926536854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,8 +1775,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -187, y: 180}
-  m_SizeDelta: {x: 405.7556, y: 61.3224}
+  m_AnchoredPosition: {x: -102, y: 99}
+  m_SizeDelta: {x: 487.7028, y: 181.3844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926536856
 MonoBehaviour:
@@ -1766,7 +1791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1776,7 +1801,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 40
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 200
@@ -1786,7 +1811,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5C0B\u627E\u96FB\u8166\u67E5\u770B\u65B0\u805E"
+  m_Text: "\u8ABF\u591C\u5E02\u7684\u76E3\u8996\u5668\u770B\u770BMr.\u67EF\u662F\u5426\u6709\u4E82\u5410\u9E7D\u9165\u96DE"
 --- !u!222 &926536857
 CanvasRenderer:
   m_ObjectHideFlags: 0
