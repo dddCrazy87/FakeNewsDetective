@@ -95,6 +95,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void switchScene() {
-         SceneManager.LoadScene("MemorialHall");
+         SceneManager.LoadScene("KPoffice");
     }
 }

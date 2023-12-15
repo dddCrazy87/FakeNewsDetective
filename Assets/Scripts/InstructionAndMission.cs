@@ -6,6 +6,17 @@ using UnityEngine.UI;
 
 public class InstructionAndMission : MonoBehaviour
 {
+    private static InstructionAndMission instance;
+    private void Awake()
+    {
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+        }
+    }
     [SerializeField] private GameObject missionCanva, instructionCanva;
     [SerializeField] private Text missions, instructions;
     [SerializeField] private string[] Instructions = {
