@@ -147,6 +147,9 @@ public class Dialog : ScriptableObject {
             { new KeyValuePair<int, string>(1, "咦？是普通的炭基生命啊") },
             { new KeyValuePair<int, string>(1, "這代表第35代前的皇室並不是外星人，而是地球人") },
             { new KeyValuePair<int, string>(1, "原來如此，這樣就證實了這部分是真實新聞，女王確實是外星人") }
+        }},
+        { "noItemToDoResearch", new List<KeyValuePair<int, string>> {
+            { new KeyValuePair<int, string>(1, "我現在手邊沒有可以拿來研究的東西！") }
         }}
     };
 

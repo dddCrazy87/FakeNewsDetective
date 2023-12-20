@@ -11,7 +11,7 @@ public class InstructionAndMission : ScriptableObject {
     public int gameLvId = 1;
     
     public string[] Instructions = {
-        "前往住家查看電腦裡第一則新聞",
+        "查看電腦裡第一則新聞",
         "前往A黨總統候選辦公室尋求本人說法",
         "調夜市的監視器看看Mr.柯是否有亂吐鹽酥雞",
         "前往住家查看電腦裡第二則新聞",

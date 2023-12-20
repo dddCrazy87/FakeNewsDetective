@@ -157,6 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c41f20f8ed1784591cc2f8cc991ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3.5
   rb: {fileID: 2555556736233768933}
-  dialog: {fileID: 11400000, guid: d17789d4057d73e40ad8e6c4af30eb41, type: 2}
+  isPlayingOtherAnim: 0

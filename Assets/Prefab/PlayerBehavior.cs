@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-
     [SerializeField] private Rigidbody2D rb;
     
-
    private void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public bool isPlayingOtherAnim = false;
     private void Update() {
+        if(isPlayingOtherAnim) return;
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(moveX, moveY);
@@ -30,17 +30,5 @@ public class PlayerBehavior : MonoBehaviour
         else {
             GetComponent<Animator>().SetBool("walk", false);
         }
-
-        // if(Input.GetKeyDown(KeyCode.B)) {
-        //     GameManager.GetComponent<GameManager>().OpenBackpack();
-        // }
-
-        // if(Input.GetKeyDown(KeyCode.Escape)) {
-        //     GameManager.GetComponent<GameManager>().CloseBackpack();
-        // }
-
-        // if(Input.GetKeyDown(KeyCode.Q)) {
-        //     GameManager.GetComponent<GameManager>().switchScene();
-        // }
     }
 }

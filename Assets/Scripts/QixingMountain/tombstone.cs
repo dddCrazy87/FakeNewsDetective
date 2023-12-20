@@ -22,16 +22,9 @@ public class tombstone : MonoBehaviour
         }
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         if(dialogScript.showDeadBody) {
             deadBody.SetActive(true);
         }
-        if(instructionAndMission.instructionID == 11) {
-            Invoke("delaytodo", 1f);
-        }
-    }
-
-    private void delaytodo() {
-        SceneManager.LoadScene("Home");
     }
 }

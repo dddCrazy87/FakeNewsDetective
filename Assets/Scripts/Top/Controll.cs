@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Controll : MonoBehaviour
 {
     [SerializeField] private InstructionAndMission instructionAndMission;
-    [SerializeField] private Dialog dialog;
+    [SerializeField] private Backpack backpack;
 
     private void Start() {
         instructionAndMission.instructionID = 0;
@@ -15,6 +15,8 @@ public class Controll : MonoBehaviour
         instructionAndMission.finshedMission[0] = false;
         instructionAndMission.finshedMission[1] = false;
         instructionAndMission.finshedMission[2] = false;
+        backpack.isHavingDeadBodyPieces = false;
+        backpack.isHavingDeadBody = false;
     }
 
     public void ToStart() {

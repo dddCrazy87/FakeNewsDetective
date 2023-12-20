@@ -13,7 +13,7 @@ public class DialogScript : MonoBehaviour
     [SerializeField] private Text dialogText;
     private List<KeyValuePair<int, string>> dialogContent = new();
     
-    private bool isDialogSetted;
+    public bool isDialogSetted;
     private int dialogContentId = 0;
     public bool lv1Finished = false;
     public bool toCloseQueenData = true;

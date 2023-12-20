@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SceneStart : MonoBehaviour
 {
-    [SerializeField] private GameObject player, point1, point2;
+    [SerializeField] private GameObject player, point1, point2, walls;
     [SerializeField] private float queen_moveSpeed = 4f;
     [SerializeField] private InstructionAndMission instructionAndMission;
     [SerializeField] private GameObject map, ins_mis;
@@ -13,14 +13,14 @@ public class SceneStart : MonoBehaviour
     private float moveX = 0f, moveY = 0f;
     void Start() {
         if(instructionAndMission.instructionID < 9) {
+            walls.SetActive(true);
             player.transform.position = new Vector3(-8.22f, 0f, 0f);
             Destroy(gameObject);
         }
         else {
             map.SetActive(false);
             ins_mis.SetActive(false);
-            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-            player.GetComponent<Rigidbody2D>().freezeRotation = true;
+            player.SetActive(false);
             rb = GetComponent<Rigidbody2D>();
             rb.freezeRotation = true;
             Invoke("toStart", 1f);
@@ -39,13 +39,12 @@ public class SceneStart : MonoBehaviour
             Invoke("toWalk", 2f);
         }
         if(other.gameObject.tag == "Qixing_point2") {
-            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            player.GetComponent<Rigidbody2D>().freezeRotation = true;
             Invoke("playerToWalk", 1f);
         }
     }
 
     private void playerToWalk() {
+        player.SetActive(true);
         playerToMove = true;
     }
 
@@ -63,16 +62,21 @@ public class SceneStart : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
         if(playerToMove) {
-            player.transform.position = Vector2.Lerp(player.transform.position, new Vector2(-8.22f,0f), Time.deltaTime * 2f);
+            player.GetComponent<PlayerBehavior>().isPlayingOtherAnim = true;
+            player.GetComponent<Animator>().SetBool("walk", true);
+            player.transform.position = Vector2.Lerp(player.transform.position, new Vector2(-7f,0f), Time.deltaTime * 2.5f);
             Invoke("bye", 2f);
         }
     }
 
     private void bye() {
+        player.GetComponent<PlayerBehavior>().isPlayingOtherAnim = false;
+        player.GetComponent<Animator>().SetBool("walk", false);
         Destroy(point1);
         Destroy(point2);
         map.SetActive(true);
         ins_mis.SetActive(true);
+        walls.SetActive(true);
         Destroy(gameObject);
     }
 }

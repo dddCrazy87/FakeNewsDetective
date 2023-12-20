@@ -58,13 +58,13 @@ public class Computer : MonoBehaviour
         }
         if(instructionAndMission.gameLvId == 2) {
             if(picID >= news2.Length) {
-                instructionAndMission.missionLV = 2;
                 if(instructionAndMission.instructionID == 3) {
                     instructionAndMission.instructionID = 4;
+                    instructionAndMission.finshedMission[0] = false;
+                    instructionAndMission.finshedMission[1] = false;
+                    instructionAndMission.finshedMission[2] = false;
+                    instructionAndMission.missionLV = 2;
                 }
-                instructionAndMission.finshedMission[0] = false;
-                instructionAndMission.finshedMission[1] = false;
-                instructionAndMission.finshedMission[2] = false;
                 news2Canvas.SetActive(false);
                 picID = 0;
             }

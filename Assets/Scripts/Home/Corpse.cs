@@ -6,17 +6,34 @@ public class Corpse : MonoBehaviour
 {
     [SerializeField] private InstructionAndMission instructionAndMission;
     [SerializeField] private Dialog dialog;
+    [SerializeField] private Backpack backpack;
     [SerializeField] private DialogScript dialogScript;
     [SerializeField] private GameObject DeadBody, DeadBodyPieces;
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player") {
             if(instructionAndMission.instructionID == 11) {
-                dialog.nowNPC = "MainSelf5";
-                dialogScript.ShowDialog();
+                if(backpack.isHavingDeadBody) {
+                    dialog.nowNPC = "MainSelf5";
+                    dialogScript.ShowDialog();
+                }
+                else {
+                    dialog.nowNPC = "noItemToDoResearch";
+                    dialogScript.ShowDialog();
+                }
             }
-            if(instructionAndMission.instructionID == 13) {
-                dialog.nowNPC = "MainSelf7";
+            else if(instructionAndMission.instructionID == 13) {
+                if(backpack.isHavingDeadBodyPieces) {
+                    dialog.nowNPC = "MainSelf7";
+                    dialogScript.ShowDialog();
+                }
+                else {
+                    dialog.nowNPC = "noItemToDoResearch";
+                    dialogScript.ShowDialog();
+                }
+            }
+            else {
+                dialog.nowNPC = "noItemToDoResearch";
                 dialogScript.ShowDialog();
             }
         }
