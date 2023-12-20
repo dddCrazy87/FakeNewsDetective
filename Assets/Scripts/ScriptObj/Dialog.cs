@@ -95,7 +95,7 @@ public class Dialog : ScriptableObject {
             { new KeyValuePair<int, string>(2, "而等等，就是女王進行掃墓的日子，所以七星山的墓園會封鎖一天") },
             { new KeyValuePair<int, string>(2, "接著下一則新聞....") },
             { new KeyValuePair<int, string>(1, "女王的祖父？那不就是Mr.X嗎？") },
-            { new KeyValuePair<int, string>(1, "如果能夠偷偷跟在女王去掃墓的時候，偷偷地跟在他後面後面，") },
+            { new KeyValuePair<int, string>(1, "如果能夠在女王去掃墓的時候，偷偷地跟在他後面後面，") },
             { new KeyValuePair<int, string>(1, "這樣，也許就能得到Mr.X的線索了") },
             { new KeyValuePair<int, string>(1, "好，我決定了，馬上就準備出發！！") }
         }},

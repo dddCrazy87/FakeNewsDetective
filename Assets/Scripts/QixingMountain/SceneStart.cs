@@ -7,6 +7,7 @@ public class SceneStart : MonoBehaviour
     [SerializeField] private GameObject player, point1, point2;
     [SerializeField] private float queen_moveSpeed = 4f;
     [SerializeField] private InstructionAndMission instructionAndMission;
+    [SerializeField] private GameObject map, ins_mis;
     private Rigidbody2D rb;
     private bool toStop = false, playerToMove = false;
     private float moveX = 0f, moveY = 0f;
@@ -16,6 +17,8 @@ public class SceneStart : MonoBehaviour
             Destroy(gameObject);
         }
         else {
+            map.SetActive(false);
+            ins_mis.SetActive(false);
             player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
             player.GetComponent<Rigidbody2D>().freezeRotation = true;
             rb = GetComponent<Rigidbody2D>();
@@ -68,6 +71,8 @@ public class SceneStart : MonoBehaviour
     private void bye() {
         Destroy(point1);
         Destroy(point2);
+        map.SetActive(true);
+        ins_mis.SetActive(true);
         Destroy(gameObject);
     }
 }
