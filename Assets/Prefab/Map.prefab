@@ -1206,7 +1206,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 99
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &6298403632524166179
 MonoBehaviour:
@@ -1268,6 +1268,7 @@ MonoBehaviour:
   - {fileID: 6298403632253347146}
   - {fileID: 6298403632201444930}
   - {fileID: 6298403631500219371}
+  player: {fileID: 11400000, guid: 5246114a40a1b594fb19fc29671e3b32, type: 2}
 --- !u!1 &6298403632930623068
 GameObject:
   m_ObjectHideFlags: 0

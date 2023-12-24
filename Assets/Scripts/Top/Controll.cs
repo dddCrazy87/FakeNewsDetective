@@ -7,6 +7,8 @@ public class Controll : MonoBehaviour
 {
     [SerializeField] private InstructionAndMission instructionAndMission;
     [SerializeField] private Backpack backpack;
+    [SerializeField] private Player player;
+    [SerializeField] private BgmController bgmController;
 
     private void Start() {
         instructionAndMission.instructionID = 0;
@@ -17,6 +19,8 @@ public class Controll : MonoBehaviour
         instructionAndMission.finshedMission[2] = false;
         backpack.isHavingDeadBodyPieces = false;
         backpack.isHavingDeadBody = false;
+        player.isMove = true;
+        bgmController.toPuaseBgm = false;
     }
 
     public void ToStart() {

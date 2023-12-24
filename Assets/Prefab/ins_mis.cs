@@ -13,7 +13,6 @@ public class ins_mis : MonoBehaviour
     [SerializeField] private bool[] finishedID;
     [SerializeField] private GameObject[] finishedIcon;
 
-
     private void FixedUpdate() {
         instruction = instructionAndMission.SetInstruction();
         instructionText.text = instruction;

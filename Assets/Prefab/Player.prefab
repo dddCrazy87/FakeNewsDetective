@@ -159,4 +159,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
   rb: {fileID: 2555556736233768933}
+  player: {fileID: 11400000, guid: 5246114a40a1b594fb19fc29671e3b32, type: 2}
   isPlayingOtherAnim: 0

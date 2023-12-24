@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogScript: {fileID: 0}
+  player: {fileID: 11400000, guid: 5246114a40a1b594fb19fc29671e3b32, type: 2}

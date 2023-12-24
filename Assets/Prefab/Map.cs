@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Map : MonoBehaviour
 {
     [SerializeField] private GameObject[] placeBtns;
+    [SerializeField] private Player player;
 
     private bool isMapOpen = false;
     public void OpenMap() {
@@ -14,11 +15,13 @@ public class Map : MonoBehaviour
             foreach(GameObject go in placeBtns) {
                 go.SetActive(true);
             }
+            player.isMove = false;
         }
         else {
             foreach(GameObject go in placeBtns) {
                 go.SetActive(false);
             }
+            player.isMove = true;
         }
     }
 

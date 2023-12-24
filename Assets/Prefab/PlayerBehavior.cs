@@ -6,14 +6,21 @@ public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Player player;
     
    private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        player.isMove = true;
     }
 
     public bool isPlayingOtherAnim = false;
     private void Update() {
         if(isPlayingOtherAnim) return;
+        if(!player.isMove) {
+            GetComponent<Animator>().SetBool("walk", false);
+            rb.velocity = new Vector2(0, 0).normalized * moveSpeed;
+            return;
+        }
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(moveX, moveY);

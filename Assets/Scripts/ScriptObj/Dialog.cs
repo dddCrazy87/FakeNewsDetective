@@ -95,7 +95,7 @@ public class Dialog : ScriptableObject {
             { new KeyValuePair<int, string>(2, "而等等，就是女王進行掃墓的日子，所以七星山的墓園會封鎖一天") },
             { new KeyValuePair<int, string>(2, "接著下一則新聞....") },
             { new KeyValuePair<int, string>(1, "女王的祖父？那不就是Mr.X嗎？") },
-            { new KeyValuePair<int, string>(1, "如果能夠在女王去掃墓的時候，偷偷地跟在他後面後面，") },
+            { new KeyValuePair<int, string>(1, "如果能夠在女王去掃墓的時候，偷偷地跟在他後面，") },
             { new KeyValuePair<int, string>(1, "這樣，也許就能得到Mr.X的線索了") },
             { new KeyValuePair<int, string>(1, "好，我決定了，馬上就準備出發！！") }
         }},
@@ -120,7 +120,7 @@ public class Dialog : ScriptableObject {
             { new KeyValuePair<int, string>(1, "那就開始吧") },
             { new KeyValuePair<int, string>(1, "...") },
             { new KeyValuePair<int, string>(1, "......") },
-            { new KeyValuePair<int, string>(1, ".........！！！") },
+            { new KeyValuePair<int, string>(1, ".........!!!") },
             { new KeyValuePair<int, string>(1, "等等，這個人的身體...") },
             { new KeyValuePair<int, string>(1, "成分竟然充滿了二氧化矽？！") },
             { new KeyValuePair<int, string>(1, "這可不是地球人的身體構造啊...") },
@@ -150,6 +150,20 @@ public class Dialog : ScriptableObject {
         }},
         { "noItemToDoResearch", new List<KeyValuePair<int, string>> {
             { new KeyValuePair<int, string>(1, "我現在手邊沒有可以拿來研究的東西！") }
+        }},
+        { "News1", new List<KeyValuePair<int, string>> {
+            { new KeyValuePair<int, string>(1, "第一則新聞是關於一位總統候選人的醜聞") },
+            { new KeyValuePair<int, string>(1, "根據新聞，這位總統候選人似乎言行不一、裝模作樣") },
+            { new KeyValuePair<int, string>(1, "甚至非常沒有公德心，把食物吐在夜市地上") },
+            { new KeyValuePair<int, string>(1, "不知道這則新聞是不是真的，\n來調查看看吧！") },
+        }},
+        { "News2", new List<KeyValuePair<int, string>> {
+            { new KeyValuePair<int, string>(1, "第二則新聞是關於一部女王的爆紅影片") },
+            { new KeyValuePair<int, string>(1, "影片中，女王的眼睛突然變成蜥蜴眼，不禁讓人聯想到蜥蜴人") },
+            { new KeyValuePair<int, string>(1, "也有人懷疑女王可能是外星人") },
+            { new KeyValuePair<int, string>(1, "網友們根據這一系列的事展開討論") },
+            { new KeyValuePair<int, string>(1, "最後，女王親自開記者會澄清自己只是一般人") },
+            { new KeyValuePair<int, string>(1, "不知道這則新聞是不是真的，\n來調查看看吧！") },
         }}
     };
 

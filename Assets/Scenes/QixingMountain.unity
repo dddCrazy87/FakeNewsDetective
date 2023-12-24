@@ -1249,3 +1249,4 @@ MonoBehaviour:
   instructionAndMission: {fileID: 11400000, guid: 703ecca6de18b4a4ba9bf0d6c5d4a46d, type: 2}
   map: {fileID: 1509456886}
   ins_mis: {fileID: 821883457}
+  dead: {fileID: 450951332}

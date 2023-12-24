@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogScript : MonoBehaviour
 {
     [SerializeField] private Dialog dialog;
+    [SerializeField] private Player player;
     [SerializeField] private InstructionAndMission instructionAndMission;
     [SerializeField] private GameObject dialogCanvas;
     [SerializeField] private GameObject[] dialogIcons;
@@ -18,6 +19,11 @@ public class DialogScript : MonoBehaviour
     public bool lv1Finished = false;
     public bool toCloseQueenData = true;
     public bool showDeadBody = false, showDeadBodyPieces = false;
+    private AudioSource missionOkAudio;
+
+    private void Start() {
+        missionOkAudio = GetComponent<AudioSource>();
+    }
 
     public void ShowDialog() {
         dialogCanvas.SetActive(true);
@@ -28,10 +34,10 @@ public class DialogScript : MonoBehaviour
             toCloseQueenData = false;
         }
         NextDialog();
+        player.isMove = false;
     }
 
     public void NextDialog() {
-        
         if(!isDialogSetted) {
             return;
         }
@@ -43,7 +49,10 @@ public class DialogScript : MonoBehaviour
                 }
             }
             if(dialog.nowNPC == "MainSelf") {
-                lv1Finished = true;
+                if(instructionAndMission.instructionID == 2) {
+                    missionOkAudio.Play();
+                    lv1Finished = true;
+                }
             }
             if(dialog.nowNPC == "VideoProfesser1") {
                 if(instructionAndMission.instructionID == 4) {
@@ -98,9 +107,25 @@ public class DialogScript : MonoBehaviour
                     instructionAndMission.gameLvId = 3;
                 }
             }
+            if(dialog.nowNPC == "News1") {
+                instructionAndMission.missionLV = 1;
+                if(instructionAndMission.instructionID == 0) {
+                    instructionAndMission.instructionID = 1;
+                }
+            }
+            if(dialog.nowNPC == "News2") {
+                if(instructionAndMission.instructionID == 3) {
+                    instructionAndMission.instructionID = 4;
+                    instructionAndMission.finshedMission[0] = false;
+                    instructionAndMission.finshedMission[1] = false;
+                    instructionAndMission.finshedMission[2] = false;
+                    instructionAndMission.missionLV = 2;
+                }
+            }
             dialogCanvas.SetActive(false);
             isDialogSetted = false;
             dialogContentId = 0;
+            player.isMove = true;
             return;
         }
         foreach(GameObject go in dialogIcons) {
@@ -120,14 +145,17 @@ public class DialogScript : MonoBehaviour
         dialogText.text = dialogContent[dialogContentId].Value;
 
         // missions
-        if(dialog.nowNPC == "KP" && dialogContentId == 8) {
+        if(dialog.nowNPC == "KP" && dialogContentId == 8 &&instructionAndMission.instructionID == 1) {
             instructionAndMission.finshedMission[0] = true;
+            missionOkAudio.Play();
         }
-        if(dialog.nowNPC == "KP" && dialogContentId == 19) {
+        if(dialog.nowNPC == "KP" && dialogContentId == 19 &&instructionAndMission.instructionID == 1) {
             instructionAndMission.finshedMission[1] = true;
+            missionOkAudio.Play();
         }
         if(dialog.nowNPC == "VideoProfesser2" && dialogContentId == 5) {
             instructionAndMission.finshedMission[0] = true;
+            missionOkAudio.Play();
         }
         if(dialog.nowNPC == "MainSelf4" && dialogContentId == 2) {
             showDeadBody = true;
@@ -137,9 +165,35 @@ public class DialogScript : MonoBehaviour
         }
         if(dialog.nowNPC == "MainSelf5" && dialogContentId == 12) {
             instructionAndMission.finshedMission[1] = true;
+            missionOkAudio.Play();
         }
         if(dialog.nowNPC == "MainSelf7" && dialogContentId == 1) {
             showDeadBodyPieces = true;
         }
+    }
+
+    public void PrevDialog() {
+        if(!isDialogSetted) {
+            return;
+        }
+        dialogContentId --;
+        if(dialogContentId <= 0) {
+            dialogContentId = 0;
+        }
+        foreach(GameObject go in dialogIcons) {
+            go.SetActive(false);
+        }
+        if(dialogContent[dialogContentId].Key == 1) {
+            dialogIcons[mainCh].SetActive(true);
+        }
+        else if(dialogContent[dialogContentId].Key == 2) {
+            if(dialog.nowNPC == "KP") {
+                dialogIcons[KPCh].SetActive(true);
+            }
+            else if(dialog.nowNPC == "VideoProfesser1" || dialog.nowNPC == "VideoProfesser2") {
+                dialogIcons[videoProfesserCh].SetActive(true);
+            }
+        }
+        dialogText.text = dialogContent[dialogContentId].Value;
     }
 }

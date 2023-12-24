@@ -8,11 +8,16 @@ public class SceneStart : MonoBehaviour
     [SerializeField] private float queen_moveSpeed = 4f;
     [SerializeField] private InstructionAndMission instructionAndMission;
     [SerializeField] private GameObject map, ins_mis;
+    [SerializeField] private GameObject dead;
     private Rigidbody2D rb;
     private bool toStop = false, playerToMove = false;
     private float moveX = 0f, moveY = 0f;
     void Start() {
-        if(instructionAndMission.instructionID < 9) {
+        if(instructionAndMission.instructionID == 11) {
+            point1.SetActive(false);
+            dead.SetActive(true);
+        }
+        if(instructionAndMission.instructionID != 9) {
             walls.SetActive(true);
             player.transform.position = new Vector3(-8.22f, 0f, 0f);
             Destroy(gameObject);

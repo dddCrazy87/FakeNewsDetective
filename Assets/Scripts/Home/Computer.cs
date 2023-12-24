@@ -9,6 +9,8 @@ public class Computer : MonoBehaviour
     [SerializeField] private InstructionAndMission instructionAndMission;
     [SerializeField] private DialogScript dialogScript;
     [SerializeField] private Dialog dialog;
+    [SerializeField] private Player player;
+    private bool isNewsOpen = false;
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player") {
@@ -19,9 +21,13 @@ public class Computer : MonoBehaviour
             }
             else if(instructionAndMission.gameLvId == 1) {
                 news1Canvas.SetActive(true);
+                player.isMove = false;
+                isNewsOpen = true;
             }
             else if(instructionAndMission.gameLvId == 2) {
                 news2Canvas.SetActive(true);
+                player.isMove = false;
+                isNewsOpen = true;
             }
         }
     }
@@ -35,17 +41,24 @@ public class Computer : MonoBehaviour
         }
     }
 
+    private void Update() {
+        if(isNewsOpen) {
+            if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) prevBtn();
+            if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) nextBtn();
+        }
+    }
+
     private int picID = 0;
     public void nextBtn() {
         picID++;
         if(instructionAndMission.gameLvId == 1) {
             if(picID >= news1.Length) {
                 news1Canvas.SetActive(false);
-                instructionAndMission.missionLV = 1;
-                if(instructionAndMission.instructionID == 0) {
-                    instructionAndMission.instructionID = 1;
-                }
                 picID = 0;
+                player.isMove = true;
+                isNewsOpen = false;
+                dialog.nowNPC = "News1";
+                dialogScript.ShowDialog();
             }
             for(int i = 0; i < news1.Length; i ++) {
                 if(i == picID) {
@@ -58,15 +71,12 @@ public class Computer : MonoBehaviour
         }
         if(instructionAndMission.gameLvId == 2) {
             if(picID >= news2.Length) {
-                if(instructionAndMission.instructionID == 3) {
-                    instructionAndMission.instructionID = 4;
-                    instructionAndMission.finshedMission[0] = false;
-                    instructionAndMission.finshedMission[1] = false;
-                    instructionAndMission.finshedMission[2] = false;
-                    instructionAndMission.missionLV = 2;
-                }
                 news2Canvas.SetActive(false);
                 picID = 0;
+                player.isMove = true;
+                isNewsOpen = false;
+                dialog.nowNPC = "News2";
+                dialogScript.ShowDialog();
             }
             for(int i = 0; i < news2.Length; i ++) {
                 if(i == picID) {

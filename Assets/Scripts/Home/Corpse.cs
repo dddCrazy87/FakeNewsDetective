@@ -16,6 +16,7 @@ public class Corpse : MonoBehaviour
                 if(backpack.isHavingDeadBody) {
                     dialog.nowNPC = "MainSelf5";
                     dialogScript.ShowDialog();
+                    backpack.isHavingDeadBody = false;
                 }
                 else {
                     dialog.nowNPC = "noItemToDoResearch";
@@ -26,6 +27,7 @@ public class Corpse : MonoBehaviour
                 if(backpack.isHavingDeadBodyPieces) {
                     dialog.nowNPC = "MainSelf7";
                     dialogScript.ShowDialog();
+                    backpack.isHavingDeadBodyPieces = false;
                 }
                 else {
                     dialog.nowNPC = "noItemToDoResearch";

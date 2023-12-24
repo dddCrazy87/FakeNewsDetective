@@ -5,21 +5,21 @@ using UnityEngine;
 public class DialogController : MonoBehaviour
 {
     [SerializeField] private DialogScript dialogScript;
-    [SerializeField] private Rigidbody2D player_rb;
+    [SerializeField] private Player player;
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.Return)) {
+        if (Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.Return)||
+            Input.GetKeyDown(KeyCode.D)||Input.GetKeyDown(KeyCode.RightArrow)) {
             dialogScript.NextDialog();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A)||Input.GetKeyDown(KeyCode.LeftArrow)) {
+            dialogScript.PrevDialog();
         }
     }
 
     private void FixedUpdate() {
         if(dialogScript.isDialogSetted) {
-            player_rb.constraints = RigidbodyConstraints2D.FreezePosition;
-            player_rb.freezeRotation = true;
-        }
-        else {
-            player_rb.constraints = RigidbodyConstraints2D.None;
-            player_rb.freezeRotation = true;
+            player.isMove = false;
         }
     }
 }
