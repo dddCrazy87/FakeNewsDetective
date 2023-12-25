@@ -19,11 +19,7 @@ public class DialogScript : MonoBehaviour
     public bool lv1Finished = false;
     public bool toCloseQueenData = true;
     public bool showDeadBody = false, showDeadBodyPieces = false;
-    private AudioSource missionOkAudio;
-
-    private void Start() {
-        missionOkAudio = GetComponent<AudioSource>();
-    }
+    private AudioSource[] Audios;
 
     public void ShowDialog() {
         dialogCanvas.SetActive(true);
@@ -33,15 +29,26 @@ public class DialogScript : MonoBehaviour
         if(dialog.nowNPC == "MainSelf1") {
             toCloseQueenData = false;
         }
-        NextDialog();
+        Audios = GetComponents<AudioSource>();
         player.isMove = false;
+        NextDialog();
     }
 
     public void NextDialog() {
         if(!isDialogSetted) {
             return;
         }
+        if(Audios[3].isPlaying) {
+            return;
+        }
+        if(Audios[4].isPlaying) {
+            return;
+        }
+        if(Audios[5].isPlaying) {
+            return;
+        }
         dialogContentId ++;
+        Audios[1].Play();
         if(dialogContentId >= dialogContent.Count) {
             if(dialog.nowNPC == "KP") {
                 if(instructionAndMission.instructionID == 1) {
@@ -50,7 +57,7 @@ public class DialogScript : MonoBehaviour
             }
             if(dialog.nowNPC == "MainSelf") {
                 if(instructionAndMission.instructionID == 2) {
-                    missionOkAudio.Play();
+                    Audios[0].Play();
                     lv1Finished = true;
                 }
             }
@@ -144,18 +151,53 @@ public class DialogScript : MonoBehaviour
         }
         dialogText.text = dialogContent[dialogContentId].Value;
 
+        // Audio
+        if(dialog.nowNPC == "KP" && dialogContentId == 1) {
+            Audios[2].Play();
+        }
+        if(dialog.nowNPC == "KP" && dialogContentId == 5) {
+            Audios[2].Play();
+        }
+        if(dialog.nowNPC == "KP" && dialogContentId == 9) {
+            Audios[2].Play();
+        }
+        if(dialog.nowNPC == "KP" && dialogContentId == 13) {
+            Audios[2].Play();
+        }
+        if(dialog.nowNPC == "KP" && dialogContentId == 17) {
+            Audios[2].Play();
+        }
+        if(dialog.nowNPC == "KP" && dialogContentId == 23) {
+            Audios[2].Play();
+        }
+        if(dialog.nowNPC == "KP" && dialogContentId == 24) {
+            Audios[2].Play();
+        }
+        if(dialog.nowNPC == "VideoProfesser2" && dialogContentId == 4) {
+            Audios[3].Play();
+        }
+        if(dialog.nowNPC == "MainSelf4" && dialogContentId == 1) {
+            Audios[4].Play();
+        }
+        if(dialog.nowNPC == "MainSelf5" && dialogContentId == 1) {
+            Audios[5].Play();
+        }
+        if(dialog.nowNPC == "MainSelf7" && dialogContentId == 1) {
+            Audios[5].Play();
+        }
+
         // missions
         if(dialog.nowNPC == "KP" && dialogContentId == 8 &&instructionAndMission.instructionID == 1) {
             instructionAndMission.finshedMission[0] = true;
-            missionOkAudio.Play();
+            Audios[0].Play();
         }
         if(dialog.nowNPC == "KP" && dialogContentId == 19 &&instructionAndMission.instructionID == 1) {
             instructionAndMission.finshedMission[1] = true;
-            missionOkAudio.Play();
+            Audios[0].Play();
         }
         if(dialog.nowNPC == "VideoProfesser2" && dialogContentId == 5) {
             instructionAndMission.finshedMission[0] = true;
-            missionOkAudio.Play();
+            Audios[0].Play();
         }
         if(dialog.nowNPC == "MainSelf4" && dialogContentId == 2) {
             showDeadBody = true;
@@ -165,7 +207,7 @@ public class DialogScript : MonoBehaviour
         }
         if(dialog.nowNPC == "MainSelf5" && dialogContentId == 12) {
             instructionAndMission.finshedMission[1] = true;
-            missionOkAudio.Play();
+            Audios[0].Play();
         }
         if(dialog.nowNPC == "MainSelf7" && dialogContentId == 1) {
             showDeadBodyPieces = true;
@@ -176,7 +218,17 @@ public class DialogScript : MonoBehaviour
         if(!isDialogSetted) {
             return;
         }
+        if(Audios[3].isPlaying) {
+            return;
+        }
+        if(Audios[4].isPlaying) {
+            return;
+        }
+        if(Audios[5].isPlaying) {
+            return;
+        }
         dialogContentId --;
+        Audios[1].Play();
         if(dialogContentId <= 0) {
             dialogContentId = 0;
         }

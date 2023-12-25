@@ -8,7 +8,7 @@ public class tombstone : MonoBehaviour
     [SerializeField] private InstructionAndMission instructionAndMission;
     [SerializeField] private DialogScript dialogScript;
     [SerializeField] private Dialog dialog;
-    [SerializeField] GameObject deadBody, player;
+    [SerializeField] GameObject deadBody;
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player") {
             if(instructionAndMission.instructionID == 9) {

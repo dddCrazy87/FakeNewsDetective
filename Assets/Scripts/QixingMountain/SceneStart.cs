@@ -18,6 +18,7 @@ public class SceneStart : MonoBehaviour
             dead.SetActive(true);
         }
         if(instructionAndMission.instructionID != 9) {
+            point1.SetActive(false);
             walls.SetActive(true);
             player.transform.position = new Vector3(-8.22f, 0f, 0f);
             Destroy(gameObject);

@@ -10,7 +10,12 @@ public class Computer : MonoBehaviour
     [SerializeField] private DialogScript dialogScript;
     [SerializeField] private Dialog dialog;
     [SerializeField] private Player player;
+    private AudioSource pageChangeAudio;
     private bool isNewsOpen = false;
+
+    private void Start() {
+        pageChangeAudio = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Player") {
@@ -51,6 +56,7 @@ public class Computer : MonoBehaviour
     private int picID = 0;
     public void nextBtn() {
         picID++;
+        pageChangeAudio.Play();
         if(instructionAndMission.gameLvId == 1) {
             if(picID >= news1.Length) {
                 news1Canvas.SetActive(false);
@@ -91,6 +97,7 @@ public class Computer : MonoBehaviour
 
     public void prevBtn() {
         picID--;
+        pageChangeAudio.Play();
         if(instructionAndMission.gameLvId == 1) {
             if(picID < 0) {
                 picID = 0;

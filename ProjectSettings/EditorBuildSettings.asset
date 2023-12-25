@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/KPoffice.unity
     guid: 3e9af098d6ba64b47983d31fb2627ff9
   - enabled: 1
-    path: Assets/Scenes/NingxiaNM.unity
-    guid: 56a6e79a383100142b2ef2c8975a1482
-  - enabled: 1
     path: Assets/Scenes/NingxiaNMOffice.unity
     guid: aa18095daccc71043aa4798bdda86904
   - enabled: 1
@@ -29,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QixingMountain.unity
     guid: d812a597a4fb0224898bce5baa39ce5b
-  - enabled: 1
-    path: Assets/Scenes/Taipei.unity
-    guid: 4f4db18f8679f7e4aa37bc5f4a6a9840
   - enabled: 1
     path: Assets/Scenes/Taoyuan.unity
     guid: 93850676d500f0e4aa8a1c7064916383

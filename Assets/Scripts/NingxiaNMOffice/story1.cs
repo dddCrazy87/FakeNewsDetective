@@ -31,14 +31,9 @@ public class story1 : MonoBehaviour
     }
 
     public void okBtn() {
-        if(!isMusicPlaying) {
-            storyAudio.Pause();
-        }
-        foreach(GameObject go in story1_go) {
-            go.SetActive(false);
-        }
         player.isMove = true;
         instructionAndMission.gameLvId = 2;
         bgmController.toPuaseBgm = false;
+        Destroy(gameObject);
     }
 }

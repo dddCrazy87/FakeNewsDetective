@@ -7,10 +7,15 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Player player;
+    private AudioSource walkAudio;
+    private bool isPlayingWalkAudio = false;
     
    private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        walkAudio = GetComponent<AudioSource>();
         player.isMove = true;
+        walkAudio.Pause();
+        isPlayingWalkAudio = false;
     }
 
     public bool isPlayingOtherAnim = false;
@@ -19,6 +24,10 @@ public class PlayerBehavior : MonoBehaviour
         if(!player.isMove) {
             GetComponent<Animator>().SetBool("walk", false);
             rb.velocity = new Vector2(0, 0).normalized * moveSpeed;
+            if(isPlayingWalkAudio) {
+                walkAudio.Pause();
+                isPlayingWalkAudio = false;
+            }
             return;
         }
         float moveX = Input.GetAxis("Horizontal");
@@ -32,9 +41,17 @@ public class PlayerBehavior : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
         }
         if(moveX != 0 || moveY != 0) {
+            if(!isPlayingWalkAudio) {
+                walkAudio.Play();
+                isPlayingWalkAudio = true;
+            }
             GetComponent<Animator>().SetBool("walk", true);
         }
         else {
+            if(isPlayingWalkAudio) {
+                walkAudio.Pause();
+                isPlayingWalkAudio = false;
+            }
             GetComponent<Animator>().SetBool("walk", false);
         }
     }

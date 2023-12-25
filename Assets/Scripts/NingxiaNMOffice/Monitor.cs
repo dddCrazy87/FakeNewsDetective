@@ -13,13 +13,16 @@ public class Monitor : MonoBehaviour
     [SerializeField] private Player player;
     
     private bool isMonitorOpen = false;
-    private AudioSource missionOkAudio;
+    private AudioSource[] Audios;
 
     private void Start() {
-        missionOkAudio = GetComponent<AudioSource>();
+        Audios = GetComponents<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        if(instructionAndMission.instructionID != 2) {
+            return;
+        }
         if(other.gameObject.tag == "Player") {
             monitorCanvas.SetActive(true);
             player.isMove = false;
@@ -31,7 +34,7 @@ public class Monitor : MonoBehaviour
         if(dialogScript.lv1Finished) {
             if(instructionAndMission.instructionID == 2) {
                 instructionAndMission.finshedMission[2] = true;
-                missionOkAudio.Play();
+                Audios[0].Play();
                 instructionAndMission.instructionID = 3;
             }
         }
@@ -47,6 +50,7 @@ public class Monitor : MonoBehaviour
     private int picID = 0;
     public void nextBtn() {
         picID++;
+        Audios[1].Play();
         if(picID >= monitorImgs.Length) {
             picID = 0;
             player.isMove = true;
@@ -67,6 +71,7 @@ public class Monitor : MonoBehaviour
 
     public void prevBtn() {
         picID--;
+        Audios[1].Play();
         if(picID < 0) {
             picID = 0;
             return;
