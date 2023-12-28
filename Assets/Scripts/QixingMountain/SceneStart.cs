@@ -42,7 +42,8 @@ public class SceneStart : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.None;
             rb.freezeRotation = true;
             toStop = true;
-            Invoke("toWalk", 2f);
+            GetComponent<Animator>().SetBool("playAnim", true);
+            Invoke("toWalk", 7f);
         }
         if(other.gameObject.tag == "Qixing_point2") {
             Invoke("playerToWalk", 1f);
@@ -55,6 +56,7 @@ public class SceneStart : MonoBehaviour
     }
 
     private void toWalk() {
+        GetComponent<Animator>().SetBool("playAnim", false);
         rb.constraints = RigidbodyConstraints2D.None;
         rb.freezeRotation = true;
         moveY = -2f;

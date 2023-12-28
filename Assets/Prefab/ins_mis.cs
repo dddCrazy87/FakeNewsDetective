@@ -12,6 +12,7 @@ public class ins_mis : MonoBehaviour
     [SerializeField] private Text[] missionsText;
     [SerializeField] private bool[] finishedID;
     [SerializeField] private GameObject[] finishedIcon;
+    [SerializeField] private GameObject bg1, bg2, bg3;
 
     private void FixedUpdate() {
         instruction = instructionAndMission.SetInstruction();
@@ -33,6 +34,26 @@ public class ins_mis : MonoBehaviour
             else {
                 finishedIcon[i].SetActive(false);
             }
+        }
+        if(instructionAndMission.missionLV == 0) {
+            bg1.SetActive(false);
+            bg2.SetActive(false);
+            bg3.SetActive(false);
+        }
+        if(instructionAndMission.missionLV == 1) {
+            bg1.SetActive(true);
+            bg2.SetActive(false);
+            bg3.SetActive(false);
+        }
+        if(instructionAndMission.missionLV == 2) {
+            bg1.SetActive(false);
+            bg2.SetActive(true);
+            bg3.SetActive(false);
+        }
+        if(instructionAndMission.missionLV == 3) {
+            bg1.SetActive(false);
+            bg2.SetActive(false);
+            bg3.SetActive(true);
         }
     }
 }
